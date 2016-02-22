@@ -1,44 +1,41 @@
 var c= document.getElementById("playground");
 var ctx = c.getContext("2d");
 
-var notFirst = false;
-var lastX = 0;
-var lastY = 0;
-
 console.log("This works");
 
-playground.addEventListener("click", function doStuff(e){
-    var x = e.offsetX;
-    var y = e.offsetY;
+var expand = true;
+var radius = 0;
 
+
+var draw = function drawCircle(){
     
+    ctx.clearRect(0,0,500,500);
+    
+    if (expand){
+        radius++;
+    } else {
+        radius--;
+    }
+    if (radius >= 250){
+        expand = false;
+    } else if (radius == 0 ){
+        expand = true;
+    }
+
     ctx.beginPath();
-    ctx.arc(x,y,5,0,2*Math.PI);
+    ctx.fillStyle = "#0000cc";
+    ctx.arc(250,250,radius,0,2*Math.PI);
     ctx.stroke();
+    ctx.fill();
 
-    if (notFirst){
-        ctx.beginPath();
-        ctx.moveTo(lastX, lastY);
-        ctx.lineTo(x,y);
-        ctx.stroke();
-    }
-    notFirst = true;
-    lastX = e.offsetX;
-    lastY = e.offsetY;    
-    }
-    
-    window.requestAnimationFrame(		
-);
-
-/*
-function ClearStuff(e){
-    ctx.clearRect(0,0,538,538);
-    console.log("CLEARED");
+    window.requestAnimationFrame( drawCircle );
 }
-*/
-//var cleared = document.getElementById("clear").addEventListener("click", ClearStuff());
-clear.addEventListener("click", function clearStuff(e){
-    ctx.clearRect(0,0,538,538);
-    console.log("CLEARED");
-    notFirst = false;
-});
+
+clear.addEventListener( "click", draw );
+
+var desist = function HALT(){
+    window.cancelAnimationFrame( draw );
+}
+
+// stop.addEventListener is not a function... It's not supposed to be???
+stop.addEventListener( "click", desist);
