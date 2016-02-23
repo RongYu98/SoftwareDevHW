@@ -3,7 +3,7 @@ var ctx = c.getContext("2d");
 var requestID;
 
 var logo = new Image();
-logo.src = "";
+logo.src = "logo_dvd.jpg";
 
 console.log("This works");
 
@@ -44,26 +44,23 @@ var desist = function HALT(){
 var stop = document.getElementById("stop");
 stop.addEventListener( "click", desist);
 
-/*
-
 var dx = 1;
-var dy = 1;
-var x = 0;
-var y = 0;
+var dy = 2;
+var x = 10;
+var y = 30;
 
 var DVD = document.getElementById("disc");
 var bounce = function(){
-    ctx.drawImage(logo, x, y, 15,5); w,h
-    if ( ((x + 15) < 500) || ( x < 2 ) ){
+    ctx.drawImage(logo, x, y, 80,60); //w,h
+    if ( ((x + 80) > 500) || ( x < 2 ) ){
         dx *= -1;
     } 
-    if ( ((y+5) < 500) || (y < 0)){
+    if ( ((y+60) > 500) || (y < 0)){
         dy *= -1;
     }
     x += dx;
     y += dy;
+    console.log("This works");
+    requestID = window.requestAnimationFrame( bounce );
 }
 DVD.addEventListener( "click", bounce )
-
-
-*/
