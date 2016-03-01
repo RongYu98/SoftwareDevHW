@@ -15,22 +15,10 @@ var grow = function(){
 	c.document.getElementByTagName("circle")[0] //
 	var radius = parseInt(c.getAttribute("r"));
 	c.setAttribute("r", radius.toString() ); //radius is local var
+        console.log("hi");
     };
-    intervalID= window.setInterval(animatecode, 16)
-
-/*
-var c = document.createElementNS( "http://www.w3.org/2000/svg", "circle" );
-
-c.setAttribute("cx", 0);
-c.setAttribute("cy", 10);
-c.setAttribute( "r", 100); //Quotes around numbers do not matter
-c.setAttribute( "fill", "red");
-c.setAttribute( "stroke", "black" );
-console.log("Gu");
-
-pic.appendChild(c);
-
-*/
+    intervalID= window.setInterval(animateCode, 16);
+};
 
 var change = function(e){
     e.preventDefault();
