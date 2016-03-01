@@ -1,7 +1,22 @@
 var pic = document.getElementById("vimage");
 
+var intervalID; // pass as arguement to the stop function
+//...
+//..
+var grow = function(){
 
-console.log("HI!");
+    //initialization statement
+    //..
+    var c = document.createElementsNS( "http://www.w3.org/2000/svg", "circle");
+    //var c = document.createElementNS( svgNSID 
+
+    var animateCode = function(){
+	//increasing and decreasing of radius
+	c.document.getElementByTagName("circle")[0] //
+	var radius = parseInt(c.getAttribute("r"));
+	c.setAttribute("r", radius.toString() ); //radius is local var
+    };
+    intervalID= window.setInterval(animatecode, 16)
 
 /*
 var c = document.createElementNS( "http://www.w3.org/2000/svg", "circle" );
@@ -41,5 +56,9 @@ var clicked =  function(e){
         console.log("Hi");
     }
 };
+
+var stop = function(){
+    window.clearInterval(intervalID);
+}
 
 pic.addEventListener("click", clicked);
