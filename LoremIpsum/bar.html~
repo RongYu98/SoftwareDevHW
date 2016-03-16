@@ -1,0 +1,19 @@
+<html>
+  
+  <body>
+
+    CSS and HTML, No js. <br>
+
+    <dl>
+
+      <dt>
+	Bar Graph
+      </dt>
+      <dd> Hi </dd>
+      <dd> Hi1 </dd>
+
+    </dl>
+
+  </body>
+
+</html>
