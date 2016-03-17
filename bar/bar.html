@@ -1,0 +1,44 @@
+<html>
+ 
+<style>
+  .chart div {
+  font: 10px sans_serif;
+  background-color: steelblue;
+  text-align:right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+  }
+</style>
+
+
+<div class="chart">
+
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+</div>
+
+</html>
+<!--
+  <div style="width: 40px;"> 4 </div>
+  <div style="width: 80px;"> 8 </div>
+  <div style="width: 150px;"> 15 </div>
+  <div style="width: 160px;"> 16 </div>
+  <div style="width: 230px;"> 23 </div>
+  <div style="width: 420px;"> 42 </div>
+  Use data to drive the state
+
+
+
+  var data = [4,8,15,16,23,42]
+  var chart = d3.select(".chart")
+  var bar = chart.selectAll("div")
+  var barUpdate = bar.data(data)
+  var barEnter = barUpdate.enter().append("div")
+  barEnter.style("width", function(d) { return d*10 + "px"; }); //d is the corresponding element for the array, the 
+  barEnter.text(function(d) {return d; });
+
+
+
+
+-->
