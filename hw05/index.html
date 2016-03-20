@@ -1,0 +1,113 @@
+<html>
+<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+<style>
+.chart div {
+font: 10px sans_serif;
+background-color: steelblue;
+text-align:right;
+padding: 3px;
+margin: 1px;
+color: white;
+}
+</style>
+
+<h1> Republican Delegates Allocated </h1>
+
+<div class="chart">
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</div>
+
+Total Delegates: 2431
+<script>
+var dataSet = [4,8,15,16,23,42]
+
+var BigDataSet = [ ["Alabama",50,50],["Alaska",28,28],
+["Arizona",0,58],["Arkansas",39,40],["California",0,172],
+["Colorado",0,37],["Connecticut",0,28],
+["Delaware",0,16],["District of Columbia",19,19],
+["Florida",99,99],["Georgia",72,76],
+["Guam",0,9],["Hawaii",19,19],
+["Idaho",32,32],["Illinois",67,69],
+["Indiana",0,57],["Iowa", 30,30],
+["Kansas",40,40],["Kentucky",46,46],
+["Louisiana",41,46],["Maine",23,23],
+["Maryland",0,38],["Massachusetts",42,42],
+["Michigan",59,59],["Minnesota",38,38],
+["Mississippi",37,40],["Missouri",40,52],
+["Montana",0,27],["Nebraska",0,36],
+["Nevada",0,30],["New Hampshire",23,23],
+["New Jersey",0,51],["New Mexico",0,24],
+["New York",0,95],["North Carolina",71,72],
+["North Dakota",0,28],["Northern Marianas",0,9],["Ohio",66,66],
+["Oklahoma",40,43],["Oregon",0,28],["Pennsylvania",0,71],
+["Rhode Island",0,19],["South Carolina",50,50],["South Dakota",0,29],
+["Tennessee",58,58],["Texas",155,155],["Utah",0,40],
+["Vermont",16,16],["Virginia",49,49],["Washington",0,44],
+["West Virginia",0,34],["Wisconsin",0,42],["Wyoming",11,29],];
+///*
+var i = 0;
+var total = 0;
+for (i=0;i<BigDataSet.length;i++){
+  total+= BigDataSet[i][2];
+  //console.log(BigDataSet[i][0]+BigDataSet[i][2]);
+}console.log(total);
+var justNums = [];
+for (i=0;i<BigDataSet.length;i++){
+  justNums.push(BigDataSet[i][2]);
+} console.log(justNums);
+//console.log(dataSet);
+
+var highest= 0;
+for (i=0;i<BigDataSet.length;i++){
+  if (BigDataSet[i][2]>highest){
+    highest = BigDataSet[i][2]
+   }  //console.log(BigDataSet[i][0]+BigDataSet[i][2]);
+} //console.log(highest);
+
+var foo = d3.scale.linear()
+  .domain([0,172])
+  .range([0,420]);
+
+d3.select(".chart")
+  .selectAll("div") 
+    .data(BigDataSet)
+  .enter().append("div")
+    .style("width", function(d) {
+        return foo(d) + "px";})
+  .text(function(d){ return d; });
+
+//*///////////////////////////////////////////////////
+/*
+var foo = d3.scale.linear()
+  .domain([0,d3.max(dataSet)])
+  .range([0,420]);
+
+d3.select(".chart")
+  .selectAll("div") 
+    .data(dataSet)
+  .enter().append("div")
+    .style("width", function(d) {
+        return foo(d) + "px";})
+  .text(function(d){ return d; });
+*/
+</script>
+</html>
+<!--
+  Use data to drive the state
+
+  var data = [4,8,15,16,23,42]
+  var chart = d3.select(".chart")
+  var bar = chart.selectAll("div") //picks the divs the don't exist
+  var barUpdate = bar.data(data) NOTE: second data is the variable name //binds the dataset to the divs that don't exist
+  var barEnter = barUpdate.enter().append("div") //.enter().append("div") adds a placeholder with a div for each element in dataset
+  barEnter.style("width", function(d) { return d*10 + "px"; }); //d is the corresponding element for the array, the  
+  barEnter.text(function(d) {return d; });
+
+
+<script src="index.js">
+  </script>
+
+2 space indent for unchanged selection
+4 -space for modified selection
+
+-->
