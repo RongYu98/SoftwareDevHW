@@ -1,0 +1,33 @@
+<html>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<h1> Republican Delegates Allocated </h1>
+
+<div class="chart">
+</div>
+<h1> Republican Delegates Not Allocated </h1>
+<div class="chart2">
+</div>
+
+Total Delegates: 2431
+
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="index.js">
+</script>
+
+</html>
+<!--
+  Use data to drive the state
+
+  var data = [4,8,15,16,23,42]
+  var chart = d3.select(".chart")
+  var bar = chart.selectAll("div") //picks the divs the don't exist
+  var barUpdate = bar.data(data) NOTE: second data is the variable name //binds the dataset to the divs that don't exist
+  var barEnter = barUpdate.enter().append("div") //.enter().append("div") adds a placeholder with a div for each element in dataset
+  barEnter.style("width", function(d) { return d*10 + "px"; }); //d is the corresponding element for the array, the  
+  barEnter.text(function(d) {return d; });
+
+
+<script src="index.js">
+  </script>
+-->

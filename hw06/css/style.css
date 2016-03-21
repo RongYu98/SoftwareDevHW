@@ -1,0 +1,16 @@
+.chart div {
+font: 10px sans_serif;
+background-color: steelblue;
+text-align:right;
+padding: 3px;
+margin: 1px;
+color: white;
+}
+.chart2 div {
+font: 10px sans_serif;
+background-color: steelblue;
+text-align:right;
+padding: 3px;
+margin: 1px;
+color: white;
+}
