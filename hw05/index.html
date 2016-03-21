@@ -9,16 +9,28 @@ padding: 3px;
 margin: 1px;
 color: white;
 }
+.chart2 div {
+font: 10px sans_serif;
+background-color: steelblue;
+text-align:right;
+padding: 3px;
+margin: 1px;
+color: white;
+}
 </style>
 
 <h1> Republican Delegates Allocated </h1>
 
 <div class="chart">
-  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 </div>
+<h1> Republican Delegates Not Allocated </h1>
+<div class="chart2">
+</div>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
 Total Delegates: 2431
 <script>
+
 var dataSet = [4,8,15,16,23,42]
 
 var BigDataSet = [ ["Alabama",50,50],["Alaska",28,28],
@@ -43,19 +55,23 @@ var BigDataSet = [ ["Alabama",50,50],["Alaska",28,28],
 ["Rhode Island",0,19],["South Carolina",50,50],["South Dakota",0,29],
 ["Tennessee",58,58],["Texas",155,155],["Utah",0,40],
 ["Vermont",16,16],["Virginia",49,49],["Washington",0,44],
-["West Virginia",0,34],["Wisconsin",0,42],["Wyoming",11,29],];
-///*
+["West Virginia",0,34],["Wisconsin",0,42],["Wyoming",11,29]];
+
 var i = 0;
 var total = 0;
 for (i=0;i<BigDataSet.length;i++){
   total+= BigDataSet[i][2];
   //console.log(BigDataSet[i][0]+BigDataSet[i][2]);
-}console.log(total);
+}
+
 var justNums = [];
+var justStates = [];
+var dele = [];
 for (i=0;i<BigDataSet.length;i++){
   justNums.push(BigDataSet[i][2]);
+  justStates.push(BigDataSet[i][0]);
+  dele.push(BigDataSet[i][1]);	     
 } console.log(justNums);
-//console.log(dataSet);
 
 var highest= 0;
 for (i=0;i<BigDataSet.length;i++){
@@ -65,7 +81,7 @@ for (i=0;i<BigDataSet.length;i++){
 } //console.log(highest);
 
 var foo = d3.scale.linear()
-  .domain([0,172])
+  .domain([0,d3.max(dele)])
   .range([0,420]);
 
 d3.select(".chart")
@@ -73,24 +89,33 @@ d3.select(".chart")
     .data(BigDataSet)
   .enter().append("div")
     .style("width", function(d) {
-        return foo(d) + "px";})
-  .text(function(d){ return d; });
+        return foo(d[1])*3 + "px";})
+  .text(function(d){ return d[0] + " " + d[1]; });
 
-//*///////////////////////////////////////////////////
-/*
-var foo = d3.scale.linear()
-  .domain([0,d3.max(dataSet)])
+
+var allocated = [];
+for (i=0; i<dele.length; i++){
+  allocated.push(justNums[i] - dele[i]);
+}
+var foo2 = d3.scale.linear()
+  .domain([0,d3.max(allocated)])
   .range([0,420]);
 
-d3.select(".chart")
+d3.select(".chart2")
   .selectAll("div") 
-    .data(dataSet)
+    .data(BigDataSet)
   .enter().append("div")
     .style("width", function(d) {
-        return foo(d) + "px";})
-  .text(function(d){ return d; });
-*/
+        return foo2(d[2])*3 + "px";})
+  .text(function(d){ return d[0] + " " + (d[2]-d[1]); });
+
+d3.select("body").transition()
+      .duration(750)
+    .style("background-color", "red");
+
+
 </script>
+
 </html>
 <!--
   Use data to drive the state
