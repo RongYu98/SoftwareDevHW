@@ -1,0 +1,26 @@
+## [ EXPRESSION    FOR LOOPs or IF ELSE LOOPS
+p="myNoobPass1234"
+
+print [x for x in p]
+
+print [x for x in "1234"]
+
+
+UC="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+print [ x for x in p if x in UC ]
+
+print [ 1 if x in UC else 0 for x in p ]
+
+print [ 1 for x in p if x in UC ]
+
+def howStrong( string ):
+    LC= UC.lower();
+    
+    stength = 0
+    
+    arr = print [ 1 for x in p if x in UC ]
+        for ( i = 0; i< len(arr); i++):
+            strenth+=1
+print strenth
+##
