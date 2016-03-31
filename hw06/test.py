@@ -33,18 +33,28 @@ def howStrong( string ):
     UC="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     LC= UC.lower()
     Nums = "1234567890"
-    
-    stength = 0
+    NoApl = ".?!&#,;:-_*"
+
+    strength = 0
     i = 0
     
-    arr1 = [ 1 for x in p if x in UC ]
+    arr1 = [ 1 for x in string if x in UC ]
     strength += sum(arr1)
-    arr2 = [ 1 for x in p if x in LC ]
+    arr2 = [ 1 for x in string if x in LC ]
     strength += sum(arr2)
-    arr3 = [ 1 for x in p if x in Nums ]
+    arr3 = [ 1 for x in string if x in Nums ]
     strength += sum(arr3)
-    return strength
+    arr4 = [ 1 for x in string if x in NoApl ]
+    strength += sum(arr4)
+    if (strength > 20):
+	strength = 20
+    return strength/2
+
 
 print goodEnough("h")
 print goodEnough("h1")
 print goodEnough("h1A")
+print howStrong("IamDW!")	
+print howStrong("DWisBetterThanBrown")	
+print howStrong("ZeZLeft")	
+print howStrong("Woah,greatpassword,bro!")
