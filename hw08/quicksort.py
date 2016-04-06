@@ -6,6 +6,9 @@ def QS( data, START, END ):
 		return data
 		print
 	pivot = data[(start + end) / 2]
+	data[(start + end) / 2] = data[end]
+	data[end] = pivot
+	end -= 1
 	print "Pivot is",
 	print pivot
 
@@ -19,6 +22,13 @@ def QS( data, START, END ):
 			end -= 1
 		else:
 			start += 1
+
+	if (data[start] < pivot ):
+		data[END] = data[start+1]
+		data[start+1] = pivot
+	else:
+		data[END] = data[start]
+		data[start] = pivot
 
 	data[end] = pivot
 	print data
