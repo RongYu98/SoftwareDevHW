@@ -1,0 +1,17 @@
+def union( a b ):
+    return [ b
+             for b in range(a)
+             for c in range(b)
+             if a == b ]
+
+print union( {1,5,8,2}, {5,3,8,23} )
+    
+"""
+def intersection( a b )
+
+"""
+    """
+    set difference
+    symetric difference
+    cartesian product
+    """

@@ -47,10 +47,23 @@ def howStrong( string ):
     arr4 = [ 1 for x in string if x in NoApl ]
     strength += sum(arr4)
     if (strength > 20):
-	strength = 20
+        strength = 20
     return strength/2
 
+def strengthChecker(p):
+    UC="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    Nums = "1234567890"
+    LC= UC.lower()
+    l = [1 if x in UC else
+         2 if x in LC else
+         3 if x in Nums else
+         0 for x in p ]
+    print l
+    return 1 in l and 2 in l and 3 in l
 
+print strengthChecker("Hi!89798")
+
+"""
 print goodEnough("h")
 print goodEnough("h1")
 print goodEnough("h1A")
@@ -58,3 +71,4 @@ print howStrong("IamDW!")
 print howStrong("DWisBetterThanBrown")	
 print howStrong("ZeZLeft")	
 print howStrong("Woah,greatpassword,bro!")
+"""
