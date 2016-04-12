@@ -1,0 +1,147 @@
+{% extends "base_on.html" %}
+
+{% block title %}Triangulate - {{user}}{% endblock %}
+
+{% block contents %}
+
+<!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('../static/img/nyc.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1>Triangulate</h1>
+                        <hr class="small">
+                        <span class="subheading">{{user}}-Find Location</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <center><font color="SteelBlue">
+                <p><b>Lets find the mid-point location!!, {{user}}</b></p>
+                <p>
+
+                  <form method = "POST">
+                   Search for a location by name: 
+                    <input type = "text" name = "place" placeholder="Stuyvesant"></input><br><br>
+                    <input type = "submit" name="submit" value="Find By Name" class="btn btn-default"></input>
+                  </form>
+                    <br><br>
+                  <form method = "POST">
+                    Search for a location by coordinates:<br>(Make sure there are no spaces in the coordinates; otherwise there would be an error)<br><br>
+                    <input type = "text" name = "lat" placeholder="Latitude"></input>
+                    <input type = "text" name = "long" placeholder="Longitude"></input><br><br>
+                    <input type="submit" name="submit" value="Find By Coordinate" class="btn btn-default"></input>
+                    <input type="submit" name="submit" value="Find On Map" class="btn btn-default"></input><br><br>
+                    <input type = "submit" name="submit" value="Find places nearby with food" class="btn btn-default"></input>
+                  </form>
+                </p>
+                <p>
+
+                    {% if error %}
+                    Error: {{error}}
+                    {% endif %}
+                    {% if loc %}
+                    <font color="SlateGray"><b>Location Searched:</b></font> {{loc | safe}}
+                    {% endif %}
+
+                    <br>
+                    {% if loc %}
+                    <b>Address Found:</b> {{add}}
+                    <br>
+                    {% endif %}
+                    {% if lat %}
+                    <b>Latitude:</b> {{lat}}
+                    <br><br>
+                    {% endif %}
+                    {% if lng %}
+                    <b>Longitude:</b> {{lng}}
+                    <br>
+                    {% endif %}
+                    <br>
+                    {% if result %}
+                    <b><font color="SlateBlue">Here are the locations of several places where you can eat nearby:</font></b><br><br>
+                    {% for key, value in result.iteritems() %}
+                    <b><font color="SlateGray">Location: {{key+1}}.</font></b> {{value}}
+                    <br><br>
+                    {% endfor %}
+                    {% endif %}
+
+                    <br><br>
+                    </p>
+                    <hr>
+                    </font>
+                    <p>
+                        <font color ="green">
+                    <form method = "POST">
+                      <b>Search for the midpoint between three locations:</b>
+                      <br><br>
+                      Location 1: 
+                     <input type = "text" name = "lat1" placeholder="Latitude 1"></input>
+                     <input type = "text" name = "long1" placeholder="Longitude 1"></input>
+                      <br><br>
+                      Location 2: 
+                      <input type = "text" name = "lat2" placeholder="Latitude 2"></input>
+                      <input type = "text" name = "long2" placeholder="Longitude 2"></input>
+                     <br><br>
+                     Location 3: 
+                      <input type = "text" name = "lat3" placeholder="Latitude 3"></input>
+                      <input type = "text" name = "long3" placeholder="Longitude 3"></input>
+                     <br><br>
+                      <input type="submit" name="submit" value="Find the midpoint of the three locations" class="btn btn-default"></input>
+                      <br><br>
+                      <input type="submit" name="submit" value="Find the location where each person travels the minimum distance" class="btn btn-default"></input>
+                    </form>
+                    <br><br>
+
+                    <hr>
+                    <p>
+                        <font color ="green">
+                    <form method = "POST">
+                      <b>Search for the midpoint between three locations:</b>
+                      <br><br>
+                      Location 1: 
+                     <input type = "text" name = "add1" placeholder="Address 1"></input>
+                     <br><br>
+                      Location 2: 
+                      <input type = "text" name = "add2" placeholder="Address 2"></input>
+                     <br><br>
+                     Location 3: 
+                      <input type = "text" name = "add3" placeholder="Address 3"></input>
+                     <br><br>
+                      <input type="submit" name="submit" value="Find the midpoint of the three addresses" class="btn btn-default"></input>
+                      <br><br>
+                      <input type="submit" name="submit" value="Find the location where each person travels the minimum distance " class="btn btn-default"></input>
+                    </form>
+                    <br><br>
+
+                    {% if midpoint %}
+                    <b>Midpoint: </b>{{midpoint}}
+                    {% endif %}
+                    
+                    {% if midpoint_imperial %}
+                    <b>Location in imperial units: </b> {{midpoint_imperial}}
+                    {% endif %}
+                    
+                    {% if midpoint_metric %}
+                    <b>Location in metric units: </b> {{midpoint_metric}}
+                    {% endif %}
+                  </p>
+
+                </font>
+                </center>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+

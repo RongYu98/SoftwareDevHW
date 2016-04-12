@@ -1,0 +1,59 @@
+{% extends "base_off.html" %}
+
+{% block title %}Triangulate - Register{% endblock %}
+
+{% block contents %}
+<!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('../static/img/tree.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1>Triangulate</h1>
+                        <hr class="small">
+                        <span class="subheading">Register</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+<!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <center><font color="LimeGreen">
+                <p><b>Hello, there...welcome to Triangulate</b></p>
+                <p>
+                <form name="sentMessage" id="contactForm" novalidate class="loginform" method="POST"> <!-- if the stylebody is added and login changed to loginform, login is redundant-->
+                {% if err %}
+                <err>{{err}}</err>
+                {% endif %}
+                <br>
+                  <div>Register</div><br>
+                  <div class="row control-group">
+                         <div class="form-group col-xs-12 floating-label-form-group controls">
+                             <label>Username</label>
+                                  <input type = "text" name = "username" class="form-control" placeholder="Username" required data-validation-required-message="Please enter your username." id="name"></input><br><br>
+                            <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                    <div class="row control-group">
+                         <div class="form-group col-xs-12 floating-label-form-group controls">
+                             <label>Password</label> 
+                                <input type = "password" name = "password" class="form-control" placeholder="Password" required data-validation-required-message="Please enter your password." ></input><br><br>
+                                 <p class="help-block text-danger"></p>
+                        </div>
+                        </div> 
+
+                  <input type="submit" class="btn btn-default" name="button" value="Register"></input>
+
+                </form>
+                </p>
+                </font>
+                </center>
+              </div>
+            </div>
+          </div>
+          
+{% endblock %}
