@@ -2,6 +2,16 @@ import urllib2, google, bs4, re
 import time
 
 def what_time(fn):
+    #print "GOT TO TIME"
+    def inner(*args):
+        t1 = time.time()
+        val = fn(*args)
+        t2 = time.time()
+        print
+	print "The time: "+str(t2 - t1)
+        return val
+    return inner
+
     t1 = time.time()
     def inner(*arg):
         t = time
@@ -11,6 +21,12 @@ def what_time(fn):
     return inner
 
 def what_name(fn):
+    def inner(*args):
+        print "Function is: "+fn.func_name
+	print "The args are: "+str(*args)
+        return fn(*args)
+    return inner
+
     n = fn.func_name
     args = fn.func_code.co_varnames
     print "The function name is: ["+n+"]."
