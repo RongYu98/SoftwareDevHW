@@ -1,0 +1,11 @@
+import time
+
+def wrapper( f ):
+   def inner( *arg ):
+       return f( *arg )
+   return inner
+
+def foo( num1, num2, string):
+    print time.time()
+closure = wrapper(foo)
+closure( -2, 3, 'hello' )

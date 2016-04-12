@@ -1,6 +1,25 @@
 from flask import Flask, render_template, request, jsonify
 import urllib2
 import json
+import time
+
+def what_time(fn):
+    t1 = time.time()
+    def inner(*arg):
+        t = time
+        print "Time Taken for Function: ["+fn.func_name+"] is " + str(t2-t1)
+	fn(arg)
+        return "Time Taken for function is: "+str(time.time() - t1)
+    return inner
+
+def what_name(fn):
+    n = fn.func_name
+    args = fn.func_code.co_varnames
+    print "The function name is: ["+n+"]."
+    print "The args are [",
+    print args,
+    print "]."
+    return ""
 
 def numTo(lat, long):
     #lat = 40.714224

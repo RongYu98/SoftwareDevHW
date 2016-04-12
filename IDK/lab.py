@@ -24,18 +24,14 @@ def wait( num ):
 #print closure2( 2 )
 #closure3 = wrapper( quicksort.
 
-
+x = """
 def make_bold(fn):
     return lambda : "<b>" + fn() + "</b>"
 
 def make_italic(fn):
-    time1 = time.time()
-    #fn()
     return lambda : "<i>" + fn() + "</i>"
-    #return "Time is: "+str(time.time()-time1)
 
-@make_italic
-@make_bold # bold runs on italic of hello(), works backwards
+@make_bold
 @make_italic
 def hello():
     return "hello world"
@@ -43,29 +39,26 @@ def hello():
 helloHTML = hello()
 
 print helloHTML
-
+"""
 def what_time(fn):
     t1 = time.time()
-    def inner(*arg):
-        t = time
-        print "Time Taken for Function: ["+fn.func_name+"] is " + str(t2-t1)
-	fn(arg)
-        return "Time Taken for function is: "+str(time.time() - t1)
-    return inner
+    fn()
+    t2 = time.time()
+    return "Time Taken for Function: ["+fn.func_name+"] is " + str(t2-t1)
+    ##return f
 
 def what_name(fn):
     n = fn.func_name
     args = fn.func_code.co_varnames
-    print "The function name is: ["+n+"]."
-    print "The args are [",
+    print "The function name is: ["+n+"]. The args are [",
     print args,
-    print "]."
-    return ""
+    #print "]."
+    return "]."#"The function name is: ["+n+"]. The args are ["+args+"]." #fn()
 
 @what_time
 @what_name
 def stuff():
     return quicksort.QS(quicksort.c, 0, len(quicksort.c)-1)
 
-#S = stuff()
-#print S
+S = stuff()
+print S

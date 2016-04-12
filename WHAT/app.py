@@ -10,6 +10,7 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+
 @app.route("/name")
 def nameToNumbers():
     add = "1600+Amphitheatre+Parkway,+Mountain+View,+CA"
@@ -21,6 +22,8 @@ def nameToNumbers():
     return jsonify(result)
 
 @app.route("/search",methods=["GET","POST"])
+@util.what_time
+@util.what_name
 def test():
     if request.method == "GET":
         user=''
