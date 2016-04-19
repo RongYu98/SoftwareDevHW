@@ -45,6 +45,19 @@ var makeAdder = function(x){
     return inc;
 }
 
+var makeAdder = function( x ){
+    var counter = 0;
+    var by = x
+    function inc(){
+	counter+=by;
+	//console.log(by);
+	//console.log("counter is now: "+counter);
+	return counter;
+    }
+    return inc;
+}
+
+
 var wat = makeIncrementer();
 
 //var watwatwat = makeAdder(n), increments by n
